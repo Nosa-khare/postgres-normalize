@@ -1,0 +1,4 @@
+Read an iTunes library in comma-separated-values (CSV) and 
+produce properly normalized
+*one-to-many tables relating albums to tracks 
+*many-to-many tables relating tracks to artists.
