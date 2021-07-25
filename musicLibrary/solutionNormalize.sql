@@ -11,10 +11,14 @@ INSERT INTO artist (name) SELECT DISTINCT artist FROM track;
 
 
 INSERT INTO tracktoartist (track, artist) SELECT DISTINCT title, artist FROM track ORDER BY title;
+  --migrate the track titles and artist name FROM tack table into corresponding tracktoartist text columns.
+  --having these TEXT tables in tracktoartist would help insert the appropriate FK id's 
+
 
 UPDATE tracktoartist SET track_id = (SELECT track.id FROM track WHERE track.title = tracktoartist.track);
+  --update track id
 UPDATE tracktoartist SET artist_id = (SELECT artist.id FROM artist WHERE artist.name = tracktoartist.artist);
-
+  --update artist id
 
 
 
@@ -25,8 +29,7 @@ ALTER TABLE tracktoartist DROP COLUMN track;
 ALTER TABLE tracktoartist DROP COLUMN artist;
 
 
--- Check answer
-
+-- Test result
 SELECT track.title, album.title, artist.name
 FROM track
 JOIN album ON track.album_id = album.id
