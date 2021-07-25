@@ -10,8 +10,8 @@ DROP TABLE track CASCADE;
 CREATE TABLE track (
     id SERIAL,
     title TEXT,
-    artist TEXT,
-    album TEXT,
+    artist TEXT, --temporary column. Needed for data migration into artist.name
+    album TEXT, ----temporary column. Needed for data migration into album.name
     album_id INT REFERENCES album(id) ON DELETE CASCADE,
     count INT,
     rating INT,
