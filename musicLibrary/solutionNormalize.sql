@@ -1,7 +1,7 @@
 
 
 
-\copy track(title,artist,album,count,rating,len) FROM '/users/conos/Documents/Codes/Postgres/pg4e/WK2/music/Task2/library.csv' WITH DELIMITER ',' CSV;
+\copy track(title,artist,album,count,rating,len) FROM 'library.csv' WITH DELIMITER ',' CSV;
 
 INSERT INTO album (title) SELECT DISTINCT album FROM track;
 UPDATE track SET album_id = (SELECT album.id FROM album WHERE album.title = track.album);
